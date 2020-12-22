@@ -1,49 +1,55 @@
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'dracula/vim'
-Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdcommenter'
-" Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/indentpython.vim'
-" Frontend development
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
+Plug 'christoomey/vim-tmux-navigator'
+" Syntax
+Plug 'vim-python/python-syntax'
+Plug 'cespare/vim-toml'
+" Color schemes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Color settings
 if (has("termguicolors"))
  set termguicolors
 endif
+
+" Syntax highlighting
 syntax enable
-colorscheme dracula
+let g:python_highlight_all = 1
+
+" Theme
+set background=dark
+colorscheme PaperColor
+let g:airline_theme='papercolor-dark'
 
 " Default Settings
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 set nu
+
 filetype plugin on
 let mapleader=","
 set timeout timeoutlen=1500
+
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+
 " yanking goes to system clipboard
 set clipboard=unnamedplus
-" stop annying auto commenting on new lines
-au BufEnter * set fo-=c fo-=r fo-=o
+
 filetype indent on
 set autoindent
 
@@ -56,24 +62,23 @@ set tabstop=4 softtabstop=4 expandtab shiftwidth=4
 set splitright splitbelow
 set numberwidth=1
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
 " Traverse line breaks with arrow keys
 set whichwrap=b,s,<,>,[,]
 set wildmode=longest,list,full
+
 " Set backups
 if has('persistent_undo')
   set undofile
   set undolevels=3000
   set undoreload=10000
 endif
+
 set backupcopy=yes " for watchers
 set noswapfile
-set colorcolumn=80,110
 
-" NERDTree settings
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
+" Guide columns
+set colorcolumn=80,110
 
 " NERD Commenter
 " Add spaces after comment delimiters by default
@@ -94,12 +99,10 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-" Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
-nnoremap <silent> <C-g> :NERDTreeToggle<CR>
+" Make sure comments don't extend to the next line
+au BufEnter * set fo-=c fo-=r fo-=o
 
-" FZF settings
+" **FZF settings** - use ripgrep
 nnoremap <C-p> :Rg<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -107,24 +110,11 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \}
 
-" ALE Settings
-" let g:ale_linters = {
-" \   'python': ['flake8'],
-" \   'go': ['gofmt']
-" \}
-"
-" let g:ale_fixers = {
-" \   'javascript': ['eslint'],
-" \   'python': ['black']
-" \}
-"
-" let g:ale_fix_on_save = 1
-" let g:ale_lint_on_insert_leave = 1
-"
-" let g:airline#extensions#ale#enabled = 1
+" **CoC settings**
+" CoC extensions
+let g:coc_global_extensions = ['coc-json', 'coc-python', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-html']
 
-" ==================CoC=====================================================
-" ==========================================================================
+" Settings below are taken from: https://github.com/neoclide/coc.nvim#example-vim-configuration
 
 " TextEdit might fail if hidden is not set.
 set hidden
