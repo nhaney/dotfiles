@@ -1,10 +1,10 @@
 {
-    "python.jediEnabled": false,
     "python.formatting.provider": "black",
     "coc.preferences.formatOnSaveFiletypes": ["python", "rust", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "python.venvFolders": ["envs",".pyenv",".direnv", "~/.local/share/virtualenvs", "~/.cache/pypoetry/virtualenvs"],
     "tsserver.npm": "/home/nigel/.npm-global/bin/npm",
     "eslint.autoFixOnSave": true,
     "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "prettier.disableSuccessMessage": true
+    "prettier.disableSuccessMessage": true,
+    "python.venvPath": ".venv/",
+    "python.pythonPath": ".venv/bin/python"
 }
