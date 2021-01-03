@@ -58,7 +58,19 @@ set cursorline
 set mouse=a
 set hidden
 set completeopt=noinsert,menuone,preview
+
+" Default to python/rust settings
 set tabstop=4 softtabstop=4 expandtab shiftwidth=4
+
+" Language specific tab settings
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType xml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType java setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+
 set splitright splitbelow
 set numberwidth=1
 set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
@@ -102,6 +114,9 @@ let g:NERDToggleCheckAllLines = 1
 " Make sure comments don't extend to the next line
 au BufEnter * set fo-=c fo-=r fo-=o
 
+" Use pyenv python version
+let g:python3_host_prog =  "~/.pyenv/shims/python"
+
 " **FZF settings** - use ripgrep
 nnoremap <C-p> :Rg<CR>
 let g:fzf_action = {
@@ -112,7 +127,8 @@ let g:fzf_action = {
 
 " **CoC settings**
 " CoC extensions
-let g:coc_global_extensions = ['coc-json', 'coc-pyright', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-html']
+let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-pyright', 'coc-diagnostic', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-html']
+
 
 " Settings below are taken from: https://github.com/neoclide/coc.nvim#example-vim-configuration
 
@@ -233,8 +249,10 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
+" Add `:Format` command to format current buffer and make leader + f format code
 command! -nargs=0 Format :call CocAction('format')
+nnoremap <silent> <leader>f :Format<cr>
+vnoremap <silent> <leader>f :Format<cr>
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
