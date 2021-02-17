@@ -127,7 +127,7 @@ let g:fzf_action = {
 
 " **CoC settings**
 " CoC extensions
-let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-pyright', 'coc-diagnostic', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-html']
+let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-pyright', 'coc-diagnostic', 'coc-rust-analyzer', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-html', 'coc-go']
 
 
 " Settings below are taken from: https://github.com/neoclide/coc.nvim#example-vim-configuration
