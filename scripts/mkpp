@@ -1,4 +1,4 @@
 #!/bin/sh
-
+# mkpp (make python package): Creates a directory and a __init__.py file in it
 mkdir $1 && touch $1/__init__.py
 
