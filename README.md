@@ -1,5 +1,16 @@
 # My dotfiles
 
-Currently used to set up tmux and scripts
+I use GNU stow to manage my dotfiles, following [this guide](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
 
-My neovim configuration can be found here: https://github.com/nhaney/nvim-basic-ide
+Example:
+
+```bash
+# To install tmux config
+stow tmux
+
+# To install neovim config
+stow nvim
+
+# To install helper scripts (target is ~/.local/bin)
+stow scripts
+```
