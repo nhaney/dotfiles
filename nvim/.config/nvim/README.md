@@ -12,16 +12,17 @@
     * nvim-lsp
     * null-ls
     * luasnip
-* Update neovim to see if weird cmp error goes away.
-* Consolidate neovim repo and dotfiles repo.
+* ~~Update neovim to see if weird cmp error goes away.~~
+* ~~Consolidate neovim repo and dotfiles repo.~~
 * Make sure that lua tools for creating neovim config are all pinned in neovim config.
     * Lua LSP downloaded.
     * Stylua downloaded.
     * Is there a way to pin these packages?
+        * Mason downloads, neovim packages
 * Start building out python development workflow.
     * LSP with pyright
     * Formatting with black
     * Linting with mypy, pylint, etc.
+    * How can I make these work when developing in a virtual environment? A container?
 * Build out dotnet dev workflow.
-* Buld out rust dev workflow.
-
+* Build out rust dev workflow.

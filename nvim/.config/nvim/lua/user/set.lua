@@ -61,4 +61,4 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Turn off virtual text for diagnostics.
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ virtual_text = false })
