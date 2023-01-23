@@ -1,0 +1,17 @@
+# Show username.
+[username]
+show_always = true
+disabled = false
+
+# Show hostname.
+[hostname]
+ssh_only = false
+disabled = false
+
+# Change success/failure characters.
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+[directory]
+truncate_to_repo=false
