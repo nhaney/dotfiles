@@ -41,6 +41,8 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "path" },
+				{ name = "buffer" },
 			},
 			experimental = {
 				ghost_text = true,
