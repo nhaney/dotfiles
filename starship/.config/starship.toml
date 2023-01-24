@@ -16,3 +16,8 @@ error_symbol = "[✗](bold red) "
 [directory]
 truncate_to_repo=false
 
+[package]
+disabled=true
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
