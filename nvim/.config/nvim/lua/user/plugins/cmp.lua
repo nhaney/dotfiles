@@ -1,3 +1,5 @@
+-- Debugging by removing luasnip completion for now.
+
 return {
 	opts = function()
 		local cmp = require("cmp")
@@ -39,6 +41,12 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+			},
+			experimental = {
+				ghost_text = true,
+			},
+			view = {
+				entries = "custom", -- can be "custom", "wildmenu" or "native"
 			},
 		}
 	end,

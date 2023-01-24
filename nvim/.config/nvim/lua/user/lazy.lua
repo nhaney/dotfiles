@@ -58,17 +58,17 @@ local plugins = {
 		opts = {},
 	},
 	-- nvim-cmp for completion support.
---	{
---		"hrsh7th/nvim-cmp",
---		event = "BufReadPre",
---		dependencies = {
---			"L3MON4D3/LuaSnip",
---			"hrsh7th/cmp-nvim-lsp",
---			"saadparwaiz1/cmp_luasnip",
---		},
---		opts = require("user.plugins.cmp").opts,
---		config = require("user.plugins.cmp").config,
---	},
+    {
+        "hrsh7th/nvim-cmp",
+        event = "BufReadPre",
+        dependencies = {
+            "L3MON4D3/LuaSnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
+        },
+        opts = require("user.plugins.cmp").opts,
+        config = require("user.plugins.cmp").config,
+    },
 	-- LSP support.
 	{
 		"neovim/nvim-lspconfig",
